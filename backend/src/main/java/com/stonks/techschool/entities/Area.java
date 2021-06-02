@@ -1,37 +1,37 @@
 package com.stonks.techschool.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_role")
-public class Role implements Serializable{
+@Table(name = "tb_area")
+public class Area implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String authority;
+	private String name;
 	
-	@ManyToMany(mappedBy = "roles")
-	private Set<User> users = new HashSet<>();
+	@OneToMany(mappedBy = "area")
+	private List<Course> courses = new ArrayList<>();
 	
-	public Role() {
+	public Area() {
 		
 	}
 
-	public Role(Long id, String authority) {
+	public Area(Long id, String name) {
 		super();
 		this.id = id;
-		this.authority = authority;
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -42,20 +42,20 @@ public class Role implements Serializable{
 		this.id = id;
 	}
 
-	public String getAuthority() {
-		return authority;
+	public String getName() {
+		return name;
 	}
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public Set<User> getUsers() {
-		return users;
+	public List<Course> getCourses() {
+		return courses;
 	}
 	
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class Role implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Role other = (Role) obj;
+		Area other = (Area) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
