@@ -18,6 +18,7 @@ public class CourseDTO implements Serializable {
 	private String name;
 	private Long areaId;
 	private List<StudyPlanDTO> studyPlans = new ArrayList<>();
+	private String imgUrl;
 	
 	public CourseDTO() {
 		
@@ -27,6 +28,7 @@ public class CourseDTO implements Serializable {
 		id = entity.getId();
 		name = entity.getName();
 		areaId = entity.getArea().getId();
+		imgUrl = entity.getImgUrl();
 	}
 	
 	public CourseDTO(Course entity, List<StudyPlan> studyPlansEntity) {
@@ -34,11 +36,12 @@ public class CourseDTO implements Serializable {
 		studyPlansEntity.stream().map(studyPlan -> studyPlans.add(new StudyPlanDTO(studyPlan))).collect(Collectors.toList());
 	}
 
-	public CourseDTO(Long id, String name, Long areaId) {
+	public CourseDTO(Long id, String name, Long areaId, String imgUrl) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.areaId = areaId;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -63,6 +66,14 @@ public class CourseDTO implements Serializable {
 
 	public void setAreaId(Long areaId) {
 		this.areaId = areaId;
+	}
+	
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	@Override

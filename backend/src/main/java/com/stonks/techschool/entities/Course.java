@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,8 @@ public class Course implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	@Column(columnDefinition = "TEXT")
+	private String imgUrl;
 	
 	@ManyToOne
 	@JoinColumn(name = "area_id")
@@ -34,11 +37,12 @@ public class Course implements Serializable{
 		
 	}
 
-	public Course(Long id, String name, Area area) {
+	public Course(Long id, String name, Area area, String imgUrl) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.area = area;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -71,6 +75,14 @@ public class Course implements Serializable{
 	
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
+	}
+	
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 	
 	@Override

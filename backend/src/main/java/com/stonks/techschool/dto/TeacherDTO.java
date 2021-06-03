@@ -27,6 +27,7 @@ public class TeacherDTO implements Serializable {
 	private String addressComplement;
 	private List<CourseDTO> courses = new ArrayList<>();
 	
+	
 	public TeacherDTO() {
 		
 	}
