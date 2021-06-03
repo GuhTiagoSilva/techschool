@@ -1,8 +1,6 @@
 package com.stonks.techschool.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,35 +8,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_course")
-public class Course implements Serializable{
+@Table(name = "tb_teacher")
+public class Teacher implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
+	private String address;
+	private Integer addressNumber;
+	private String addressComplement;
 	@ManyToOne
-	@JoinColumn(name = "area_id")
-	private Area area;
+	@JoinColumn(name = "course_id")
+	private Course course;
 	
-	@OneToMany(mappedBy = "course")
-	private List<Teacher> teachers = new ArrayList<>();
-	
-	public Course() {
+	public Teacher() {
 		
 	}
 
-	public Course(Long id, String name, Area area) {
+	public Teacher(Long id, String name, String address, String addressComplement, Course course, Integer addressNumber) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.area = area;
+		this.address = address;
+		this.addressComplement = addressComplement;
+		this.course = course;
+		this.addressNumber = addressNumber;
 	}
 
 	public Long getId() {
@@ -56,23 +55,39 @@ public class Course implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public Area getArea() {
-		return area;
-	}
-	
-	public void setArea(Area area) {
-		this.area = area;
+
+	public String getAddress() {
+		return address;
 	}
 
-	public List<Teacher> getTeachers() {
-		return teachers;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAddressComplement() {
+		return addressComplement;
+	}
+
+	public void setAddressComplement(String addressComplement) {
+		this.addressComplement = addressComplement;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 	
-	public void setTeachers(List<Teacher> teachers) {
-		this.teachers = teachers;
+	public Integer getAddressNumber() {
+		return addressNumber;
 	}
 	
+	public void setAddressNumber(Integer addressNumber) {
+		this.addressNumber = addressNumber;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,7 +104,7 @@ public class Course implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Course other = (Course) obj;
+		Teacher other = (Teacher) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

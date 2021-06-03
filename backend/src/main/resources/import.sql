@@ -4,6 +4,7 @@ INSERT INTO tb_company(name, address, address_number, address_complement, cnpj) 
 INSERT INTO tb_company(name, address, address_number, address_complement, cnpj) VALUES ('Amazon', 'Alameda dos Nhambiquaras - Moema, São Paulo - SP, 04090-003',  1770 , '', '51.720.531/0001-90');
 
 
+
 INSERT INTO tb_user (name,email, password, company_id) VALUES ('Alex Brown','alex@gmail.com', '123456',1);
 INSERT INTO tb_user (name,email, password, company_id) VALUES ('Maria Green', 'maria@gmail.com', '123456',2);
 INSERT INTO tb_user (name,email, password, company_id) VALUES ('Bob Red', 'bob@gmail.com', '123456',1);
@@ -15,7 +16,6 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 1);
-
 
 INSERT INTO tb_area(name)VALUES('UX');
 INSERT INTO tb_area(name)VALUES('Design');
@@ -62,3 +62,14 @@ INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(4,1);
 INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(4,3);
 INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(5,2);
 INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(5,4);
+
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Gustavo Tiago da Silva', 'Rua A', 1234, '',1);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Gabriel Sousa Costa', 'Rua B', 4321, '',2);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('João Pereira Silva', 'Rua C', 3456, '',5);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Letícia Silva Sousa', 'Rua D', 0900, '',8);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Francisco Silva', 'Rua E', 9872, '',7);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Gabriel Pereira Júnior', 'Rua F', 9853, '',6);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Carlos Alberto Costa', 'Rua G', 2587, '',1);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Marcelo Silva Santos', 'Rua H', 9854, '',2);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Paulo Silva Santos', 'Rua I', 5236, '',4);
+INSERT INTO tb_teacher(name, address, address_number, address_complement, course_id) VALUES('Luiz da Silva', 'Rua J', 2345, '',3);
