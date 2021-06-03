@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="col-6 offset-2">
         <ul className="main-menu">
           <li>
-            <NavLink to="/" exact>
+            <NavLink to="/courses" exact>
               Cursos
             </NavLink>
           </li>

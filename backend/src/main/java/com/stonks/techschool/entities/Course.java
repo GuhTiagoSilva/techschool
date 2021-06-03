@@ -33,16 +33,20 @@ public class Course implements Serializable{
 	@OneToMany(mappedBy = "course")
 	private List<Teacher> teachers = new ArrayList<>();
 	
+	@Column(columnDefinition = "TEXT")
+	private String description;
+	
 	public Course() {
 		
 	}
 
-	public Course(Long id, String name, Area area, String imgUrl) {
+	public Course(Long id, String name, Area area, String imgUrl, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.area = area;
 		this.imgUrl = imgUrl;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -83,6 +87,14 @@ public class Course implements Serializable{
 	
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	@Override

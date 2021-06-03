@@ -16,9 +16,10 @@ public class CourseDTO implements Serializable {
 	private Long id;
 	@NotBlank(message = "Campo Obrigatório")
 	private String name;
-	private Long areaId;
+	private AreaDTO area;
 	private List<StudyPlanDTO> studyPlans = new ArrayList<>();
 	private String imgUrl;
+	private String description;
 	
 	public CourseDTO() {
 		
@@ -27,8 +28,8 @@ public class CourseDTO implements Serializable {
 	public CourseDTO(Course entity) {
 		id = entity.getId();
 		name = entity.getName();
-		areaId = entity.getArea().getId();
 		imgUrl = entity.getImgUrl();
+		description = entity.getDescription();
 	}
 	
 	public CourseDTO(Course entity, List<StudyPlan> studyPlansEntity) {
@@ -36,12 +37,13 @@ public class CourseDTO implements Serializable {
 		studyPlansEntity.stream().map(studyPlan -> studyPlans.add(new StudyPlanDTO(studyPlan))).collect(Collectors.toList());
 	}
 
-	public CourseDTO(Long id, String name, Long areaId, String imgUrl) {
+	public CourseDTO(Long id, String name, AreaDTO areaDTO, String imgUrl, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.areaId = areaId;
+		this.area = areaDTO;
 		this.imgUrl = imgUrl;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -60,12 +62,12 @@ public class CourseDTO implements Serializable {
 		this.name = name;
 	}
 
-	public Long getAreaId() {
-		return areaId;
+	public AreaDTO getArea() {
+		return area;
 	}
 
-	public void setAreaId(Long areaId) {
-		this.areaId = areaId;
+	public void setArea(AreaDTO area) {
+		this.area = area;
 	}
 	
 	public String getImgUrl() {
@@ -74,6 +76,14 @@ public class CourseDTO implements Serializable {
 	
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override

@@ -74,8 +74,10 @@ public class CourseService {
 	
 	private void copyDtoToEntity(Course entity, CourseDTO dto) {
 		entity.setName(dto.getName());
+		entity.setDescription(dto.getDescription());
 		entity.setImgUrl(dto.getImgUrl());
-		Area area = areaRepository.getById(dto.getAreaId());
+		Area area = areaRepository.getById(dto.getArea().getId());
+		entity.setArea(area);
 		entity.setArea(area);
 	}
 	

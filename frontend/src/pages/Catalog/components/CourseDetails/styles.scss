@@ -1,0 +1,77 @@
+.course-details-container {
+  margin-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.course-details {
+  padding: 50px 60px 90px 60px;
+}
+
+.icon-goback {
+  color: #ffc700;
+  transform: rotate(-180deg);
+  margin-right: 30px;
+}
+
+.course-details-goback {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.text-goback {
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+  color: #ffc700;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.course-details-card {
+  border: 1px solid #e1e1e1;
+  border-radius: 20px;
+  padding: 38px 29px;
+}
+
+.course-details-image {
+  width: 353px;
+  height: 353px;
+}
+
+.course-description-title {
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+  color: #000;
+  font-weight: bold;
+}
+
+.course-description-text {
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.015em;
+  color: #000;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
+.course-details-name {
+  font-size: 36px;
+  line-height: 49px;
+  letter-spacing: -0.015em;
+  margin-top: 35px;
+  color: #000;
+  font-weight: bold;
+}
+
+.course-details .course-price {
+  font-size: 48px;
+}
+
+.button-matricula {
+  height: 80px;
+  width: 250px;
+  font-weight: bold;
+}

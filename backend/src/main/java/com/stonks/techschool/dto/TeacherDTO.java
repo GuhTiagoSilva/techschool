@@ -27,6 +27,7 @@ public class TeacherDTO implements Serializable {
 	private String addressComplement;
 	private List<CourseDTO> courses = new ArrayList<>();
 	
+	private String imgProfile;
 	
 	public TeacherDTO() {
 		
@@ -38,15 +39,17 @@ public class TeacherDTO implements Serializable {
 		address = entity.getAddress();
 		addressNumber = entity.getAddressNumber();
 		addressComplement = entity.getAddressComplement();
+		imgProfile = entity.getImgProfile();
 	}
 
-	public TeacherDTO(Long id, String name, String address, Integer addressNumber, String addressComplement) {
+	public TeacherDTO(Long id, String name, String address, Integer addressNumber, String addressComplement, String imgProfile) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.addressNumber = addressNumber;
 		this.addressComplement = addressComplement;
+		this.imgProfile = imgProfile;
 	}
 
 	public Long getId() {
@@ -95,6 +98,14 @@ public class TeacherDTO implements Serializable {
 
 	public void setCourses(List<CourseDTO> courses) {
 		this.courses = courses;
+	}
+	
+	public String getImgProfile() {
+		return imgProfile;
+	}
+	
+	public void setImgProfile(String imgProfile) {
+		this.imgProfile = imgProfile;
 	}
 
 	@Override

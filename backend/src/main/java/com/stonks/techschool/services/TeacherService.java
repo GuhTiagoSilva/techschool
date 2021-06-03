@@ -72,6 +72,7 @@ public class TeacherService {
 		entity.setAddressComplement(dto.getAddressComplement());
 		entity.setAddressNumber(dto.getAddressNumber());
 		entity.setName(dto.getName());
+		entity.setImgProfile(dto.getImgProfile());
 	}
 	
 }

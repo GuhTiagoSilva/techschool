@@ -1,6 +1,8 @@
 package com.stonks.techschool.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -61,6 +63,12 @@ public class AreaService {
 	public Page<AreaDTO> findAllPaged(PageRequest pageRequest) {
 		Page<Area> list = repository.findAll(pageRequest);
 		return list.map(area -> new AreaDTO(area, area.getCourses()));
+	}
+	
+	@Transactional(readOnly = true)
+	public List<AreaDTO> findAllWithNoPagination(){
+		List<Area> areas = repository.findAllWithNoPagination();
+		return areas.stream().map(area -> new AreaDTO(area)).collect(Collectors.toList());
 	}
 	
 	public void delete(Long id) {

@@ -1,0 +1,29 @@
+.admin-base-form {
+  padding: 75px 45px 50px 45px;
+  border-radius: 20px;
+  width: 1055px;
+  border-bottom: 15px;
+}
+
+.base-form-title {
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+  color: #263238;
+  text-transform: uppercase;
+}
+
+.base-form-actions {
+  margin-top: 70px;
+  text-align: right;
+}
+
+.cancel-button {
+  background-color: red;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.signin-button {
+  font-weight: bold;
+}

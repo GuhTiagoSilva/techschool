@@ -26,11 +26,13 @@ public class Teacher implements Serializable {
 	@JoinColumn(name = "course_id")
 	private Course course;
 	
+	private String imgProfile;
+	
 	public Teacher() {
 		
 	}
 
-	public Teacher(Long id, String name, String address, String addressComplement, Course course, Integer addressNumber) {
+	public Teacher(Long id, String name, String address, String addressComplement, Course course, Integer addressNumber, String imgProfile) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -38,6 +40,7 @@ public class Teacher implements Serializable {
 		this.addressComplement = addressComplement;
 		this.course = course;
 		this.addressNumber = addressNumber;
+		this.imgProfile = imgProfile;
 	}
 
 	public Long getId() {
@@ -86,6 +89,14 @@ public class Teacher implements Serializable {
 	
 	public void setAddressNumber(Integer addressNumber) {
 		this.addressNumber = addressNumber;
+	}
+	
+	public String getImgProfile() {
+		return imgProfile;
+	}
+	
+	public void setImgProfile(String imgProfile) {
+		this.imgProfile = imgProfile;
 	}
 
 	@Override

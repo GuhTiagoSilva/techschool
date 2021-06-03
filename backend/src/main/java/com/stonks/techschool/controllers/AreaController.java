@@ -1,6 +1,7 @@
 package com.stonks.techschool.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,6 +40,12 @@ public class AreaController {
 	public ResponseEntity<AreaDTO> update(@RequestBody AreaDTO dto, @PathVariable Long id){
 		AreaDTO areaDTO = service.update(id, dto);
 		return ResponseEntity.ok().body(areaDTO);
+	}
+	
+	@GetMapping(value = "/findAll")
+	public ResponseEntity<List<AreaDTO>> findAllWithNoPagination(){
+		List<AreaDTO> dtoList = service.findAllWithNoPagination();
+		return ResponseEntity.ok().body(dtoList);
 	}
 	
 	@GetMapping(value = "/{id}")
