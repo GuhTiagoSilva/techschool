@@ -45,3 +45,20 @@ INSERT INTO tb_course(name, area_id)VALUES ('Artificial Intelligence - MIT', 8);
 
 INSERT INTO tb_enrollment(user_id, course_id, enroll_Moment, refund_Moment, available, only_update) VALUES (1, 1, '2021-03-13T13:00:00', null, true, false);
 INSERT INTO tb_enrollment(user_id, course_id, enroll_Moment, refund_Moment, available, only_update) VALUES (2, 1, '2021-03-13T13:00:00', null, true, false);
+
+INSERT INTO tb_study_plan(description, end_date, start_date) VALUES ('Plano de Estudos I','2021-07-13T13:00:00', '2021-04-13T13:00:00' );
+INSERT INTO tb_study_plan(description, end_date, start_date) VALUES ('Plano de Estudos II','2021-08-13T13:00:00', '2021-05-13T13:00:00' );
+INSERT INTO tb_study_plan(description, end_date, start_date) VALUES ('Plano de Estudos III','2021-09-13T13:00:00', '2021-06-13T13:00:00' );
+INSERT INTO tb_study_plan(description, end_date, start_date) VALUES ('Plano de Estudos IV','2021-10-13T13:00:00', '2021-07-13T13:00:00' );
+INSERT INTO tb_study_plan(description, end_date, start_date) VALUES ('Plano de Estudos V','2021-11-13T13:00:00', '2021-08-13T13:00:00' );
+
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(1,1);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(1,2);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(2,1);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(2,2);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(3,3);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(3,4);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(4,1);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(4,3);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(5,2);
+INSERT INTO tb_study_plan_course(study_plan_id, course_id)VALUES(5,4);
