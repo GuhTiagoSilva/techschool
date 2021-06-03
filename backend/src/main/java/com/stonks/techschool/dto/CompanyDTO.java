@@ -34,7 +34,7 @@ public class CompanyDTO implements Serializable {
 	
 	public CompanyDTO(Company entity, List<User> usersEntity) {
 		this(entity);
-		usersEntity.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
+		usersEntity.forEach(user -> new UserDTO(user));
 	}
 
 	public CompanyDTO(Long id, String name, String address, Integer addressNumber, String addressComplement,

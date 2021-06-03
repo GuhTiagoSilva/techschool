@@ -42,7 +42,7 @@ public class CompanyService {
 	public CompanyDTO findById(Long id) {
 		Optional<Company> result = repository.findById(id);
 		Company entity = result.orElseThrow(() -> new ResourceNotFoundException("Id Not Found: " + id));
-		return new CompanyDTO(entity);
+		return new CompanyDTO(entity, entity.getUsers());
 	}
 	
 	@Transactional
@@ -51,7 +51,7 @@ public class CompanyService {
 			Company entity = repository.getById(id);	
 			copyDtoToEntity(entity, dto);
 			entity = repository.save(entity);
-			return new CompanyDTO(entity);
+			return new CompanyDTO(entity, entity.getUsers());
 		}catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Entity Not Found");
 		}	
@@ -60,7 +60,7 @@ public class CompanyService {
 	@Transactional(readOnly = true)
 	public Page<CompanyDTO> findAllPaged(PageRequest pageRequest) {
 		Page<Company> list = repository.findAll(pageRequest);
-		return list.map(company -> new CompanyDTO(company));
+		return list.map(company -> new CompanyDTO(company, company.getUsers()));
 	}
 	
 	private void copyDtoToEntity(Company entity, CompanyDTO dto) {

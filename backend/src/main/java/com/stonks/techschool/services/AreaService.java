@@ -80,10 +80,7 @@ public class AreaService {
 		for (CourseDTO dtos : dto.getCourses()) {
 			Course course = courseRepository.getById(dtos.getId());
 			entity.getCourses().add(course);
-		}
-		
-		
-		
+		}		
 	}
 	
 }
