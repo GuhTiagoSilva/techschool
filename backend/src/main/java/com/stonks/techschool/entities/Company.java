@@ -2,18 +2,13 @@ package com.stonks.techschool.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,14 +28,10 @@ public class Company implements Serializable {
 	@Column(unique = true)
 	private String cnpj;
 	
-	@ManyToMany
-	@JoinTable(name = "tb_company_course", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
-	private Set<Course> courses = new HashSet<>();
-	
 	@OneToMany(mappedBy = "company")
-	private List<Enrollment> enrollments = new ArrayList<>();
+	private List<User> users = new ArrayList<>();
 
-	
+
 	public Company() {
 		
 	}
@@ -103,20 +94,12 @@ public class Company implements Serializable {
 		this.cnpj = cnpj;
 	}
 	
-	public Set<Course> getCourses() {
-		return courses;
+	public List<User> getUsers() {
+		return users;
 	}
 	
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
-	}
-	
-	public List<Enrollment> getEnrollments() {
-		return enrollments;
-	}
-	
-	public void setEnrollments(List<Enrollment> enrollments) {
-		this.enrollments = enrollments;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override

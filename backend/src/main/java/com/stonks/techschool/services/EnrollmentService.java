@@ -60,7 +60,6 @@ public class EnrollmentService {
 	@Transactional
 	public EnrollmentDTO update(Long id, EnrollmentDTO dto) {
 		try {
-
 			User user = userRepository.getById(dto.getUserId());
 			Course course = courseRepository.getById(dto.getCourseId());
 

@@ -16,8 +16,10 @@ import com.stonks.techschool.dto.RoleDTO;
 import com.stonks.techschool.dto.UserDTO;
 import com.stonks.techschool.dto.UserInsertDTO;
 import com.stonks.techschool.dto.UserUpdateDTO;
+import com.stonks.techschool.entities.Company;
 import com.stonks.techschool.entities.Role;
 import com.stonks.techschool.entities.User;
+import com.stonks.techschool.repositories.CompanyRepository;
 import com.stonks.techschool.repositories.RoleRepository;
 import com.stonks.techschool.repositories.UserRepository;
 import com.stonks.techschool.services.exceptions.DatabaseException;
@@ -32,13 +34,16 @@ public class UserService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
+	@Autowired
+	private CompanyRepository companyRepository;
+	
 	@Transactional
 	public UserDTO insert(UserInsertDTO dto) {
 		User entity = new User();
 		copyDtoToEntity(entity, dto);
 		entity.setPassword(dto.getPassword());
 		entity = repository.save(entity);
-		return new UserDTO(entity);
+		return new UserDTO(entity, entity.getRoles());
 	}
 	
 	@Transactional(readOnly = true)
@@ -85,6 +90,9 @@ public class UserService {
 			Role roleEntity = roleRepository.getById(role.getId());
 			entity.getRoles().add(roleEntity);
 		}
+		
+		Company company = companyRepository.getById(dto.getCompany().getId());
+		entity.setCompany(company);
 	}
 	
 }

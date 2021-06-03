@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.stonks.techschool.entities.Company;
-import com.stonks.techschool.entities.Course;
-import com.stonks.techschool.entities.Enrollment;
+import com.stonks.techschool.entities.User;
 
 public class CompanyDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -18,8 +17,7 @@ public class CompanyDTO implements Serializable {
 	private Integer addressNumber;
 	private String addressComplement;
 	private String cnpj;
-	private List<CourseDTO> courses = new ArrayList<>();
-	private List<EnrollmentDTO> enrollments = new ArrayList<>();
+	private List<UserDTO> users = new ArrayList<>();
 	
 	public CompanyDTO() {
 		
@@ -34,10 +32,9 @@ public class CompanyDTO implements Serializable {
 		cnpj = entity.getCnpj();
 	}
 	
-	public CompanyDTO(Company entity, List<Course> coursesEntity, List<Enrollment> enrollmentsEntity) {
+	public CompanyDTO(Company entity, List<User> usersEntity) {
 		this(entity);
-		coursesEntity.stream().map(course -> new CourseDTO(course)).collect(Collectors.toList());
-		enrollmentsEntity.stream().map(enrollment -> new EnrollmentDTO(enrollment)).collect(Collectors.toList());
+		usersEntity.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
 	}
 
 	public CompanyDTO(Long id, String name, String address, Integer addressNumber, String addressComplement,
@@ -99,22 +96,14 @@ public class CompanyDTO implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	public List<CourseDTO> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<CourseDTO> courses) {
-		this.courses = courses;
+	public List<UserDTO> getUsers() {
+		return users;
 	}
 	
-	public List<EnrollmentDTO> getEnrollments() {
-		return enrollments;
+	public void setUsers(List<UserDTO> users) {
+		this.users = users;
 	}
 	
-	public void setEnrollments(List<EnrollmentDTO> enrollments) {
-		this.enrollments = enrollments;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

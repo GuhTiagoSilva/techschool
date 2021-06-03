@@ -13,16 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.stonks.techschool.dto.CompanyDTO;
-import com.stonks.techschool.dto.CourseDTO;
-import com.stonks.techschool.dto.EnrollmentDTO;
+import com.stonks.techschool.dto.UserDTO;
 import com.stonks.techschool.entities.Company;
-import com.stonks.techschool.entities.Course;
-import com.stonks.techschool.entities.Enrollment;
 import com.stonks.techschool.entities.User;
-import com.stonks.techschool.entities.pk.EnrollmentPK;
 import com.stonks.techschool.repositories.CompanyRepository;
-import com.stonks.techschool.repositories.CourseRepository;
-import com.stonks.techschool.repositories.EnrollmentRepository;
 import com.stonks.techschool.repositories.UserRepository;
 import com.stonks.techschool.services.exceptions.DatabaseException;
 import com.stonks.techschool.services.exceptions.ResourceNotFoundException;
@@ -34,12 +28,6 @@ public class CompanyService {
 	private CompanyRepository repository;
 	
 	@Autowired
-	private CourseRepository courseRepository;
-	
-	@Autowired
-	private EnrollmentRepository enrollmentRepository;
-	
-	@Autowired
 	private UserRepository userRepository;
 
 	@Transactional
@@ -47,7 +35,7 @@ public class CompanyService {
 		Company entity = new Company();
 		copyDtoToEntity(entity, dto);
 		entity = repository.save(entity);
-		return new CompanyDTO(entity);
+		return new CompanyDTO(entity, entity.getUsers());
 	}
 	
 	@Transactional(readOnly = true)
@@ -81,19 +69,10 @@ public class CompanyService {
 		entity.setAddressNumber(dto.getAddressNumber());
 		entity.setCnpj(dto.getCnpj());
 		entity.setName(dto.getName());
-		entity.getCourses().clear();
-		
-		for (CourseDTO courseDTO : dto.getCourses()) {
-			Course course = courseRepository.getById(courseDTO.getId());
-			entity.getCourses().add(course);
-		}
-		
-		for(EnrollmentDTO enrollmentDTO : dto.getEnrollments()) {
-			User user = userRepository.getById(enrollmentDTO.getUserId());
-			Course course = courseRepository.getById(enrollmentDTO.getCourseId());
-			EnrollmentPK pk = new EnrollmentPK(user, course);
-			Enrollment enrollment = enrollmentRepository.getById(pk);
-			entity.getEnrollments().add(enrollment);	
+		entity.getUsers().clear();
+		for (UserDTO userDTO : dto.getUsers()) {
+			User user = userRepository.getById(userDTO.getId());
+			entity.getUsers().add(user);
 		}
 	}
 	

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,15 +33,20 @@ public class User implements Serializable {
 	@JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 	
+	@ManyToOne
+	@JoinColumn(name = "company_id")
+	private Company company;
+	
 	public User() {
 		
 	}
 	
-	public User(Long id, String name, String email, String password) {
+	public User(Long id, String name, String email, String password, Company company) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.company = company;
 	}
 
 	public Long getId() {
@@ -81,6 +87,14 @@ public class User implements Serializable {
 	
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+	
+	public Company getCompany() {
+		return company;
+	}
+	
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 	@Override

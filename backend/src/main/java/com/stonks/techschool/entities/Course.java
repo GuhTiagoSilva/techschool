@@ -1,15 +1,12 @@
 package com.stonks.techschool.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -26,9 +23,6 @@ public class Course implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "area_id")
 	private Area area;
-	
-	@ManyToMany(mappedBy = "courses")
-	private Set<Company> companies = new HashSet<>();
 	
 	public Course() {
 		
@@ -63,14 +57,6 @@ public class Course implements Serializable{
 	
 	public void setArea(Area area) {
 		this.area = area;
-	}
-	
-	public Set<Company> getCompanies() {
-		return companies;
-	}
-	
-	public void setCompanies(Set<Company> companies) {
-		this.companies = companies;
 	}
 
 	@Override

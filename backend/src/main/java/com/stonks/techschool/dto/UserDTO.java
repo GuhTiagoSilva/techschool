@@ -3,6 +3,7 @@ package com.stonks.techschool.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.stonks.techschool.entities.Role;
@@ -10,30 +11,32 @@ import com.stonks.techschool.entities.User;
 
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String name;
 	private String email;
 	private List<RoleDTO> roles = new ArrayList<>();
-	
+	private CompanyDTO company;
+
 	public UserDTO() {
-		
+
 	}
-	
+
 	public UserDTO(User entity) {
 		id = entity.getId();
 		name = entity.getName();
 		email = entity.getEmail();
 	}
 
-	public UserDTO(Long id, String name, String email) {
+	public UserDTO(Long id, String name, String email, CompanyDTO company) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.company = company;
 	}
-	
-	public UserDTO(User entity, List<Role> rolesEntity) {
+
+	public UserDTO(User entity, Set<Role> rolesEntity) {
 		this(entity);
 		rolesEntity.stream().map(role -> roles.add(new RoleDTO(role))).collect(Collectors.toList());
 	}
@@ -65,9 +68,17 @@ public class UserDTO implements Serializable {
 	public List<RoleDTO> getRoles() {
 		return roles;
 	}
-	
+
 	public void setRoles(List<RoleDTO> roles) {
 		this.roles = roles;
+	}
+
+	public CompanyDTO getCompany() {
+		return company;
+	}
+
+	public void setCompany(CompanyDTO company) {
+		this.company = company;
 	}
 	
 	@Override
@@ -94,7 +105,5 @@ public class UserDTO implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }
