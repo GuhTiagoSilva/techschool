@@ -1,51 +1,47 @@
-package com.stonks.techschool.entities;
+package com.stonks.techschool.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.stonks.techschool.entities.Company;
+import com.stonks.techschool.entities.Course;
+import com.stonks.techschool.entities.Enrollment;
 
-@Entity
-@Table(name = "tb_company")
-public class Company implements Serializable {
+public class CompanyDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String address;
 	private Integer addressNumber;
 	private String addressComplement;
-	
-	@Column(unique = true)
 	private String cnpj;
+	private List<CourseDTO> courses = new ArrayList<>();
+	private List<EnrollmentDTO> enrollments = new ArrayList<>();
 	
-	@ManyToMany
-	@JoinTable(name = "tb_company_course", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
-	private Set<Course> courses = new HashSet<>();
-	
-	@OneToMany(mappedBy = "company")
-	private List<Enrollment> enrollments = new ArrayList<>();
-
-	
-	public Company() {
+	public CompanyDTO() {
 		
 	}
+	
+	public CompanyDTO(Company entity) {
+		id = entity.getId();
+		name = entity.getName();
+		address = entity.getAddress();
+		addressNumber = entity.getAddressNumber();
+		addressComplement = entity.getAddressComplement();
+		cnpj = entity.getCnpj();
+	}
+	
+	public CompanyDTO(Company entity, List<Course> coursesEntity, List<Enrollment> enrollmentsEntity) {
+		this(entity);
+		coursesEntity.stream().map(course -> new CourseDTO(course)).collect(Collectors.toList());
+		enrollmentsEntity.stream().map(enrollment -> new EnrollmentDTO(enrollment)).collect(Collectors.toList());
+	}
 
-	public Company(Long id, String name, String address, Integer addressNumber, String addressComplement, String cnpj) {
+	public CompanyDTO(Long id, String name, String address, Integer addressNumber, String addressComplement,
+			String cnpj) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -102,20 +98,20 @@ public class Company implements Serializable {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
-	public Set<Course> getCourses() {
+
+	public List<CourseDTO> getCourses() {
 		return courses;
 	}
-	
-	public void setCourses(Set<Course> courses) {
+
+	public void setCourses(List<CourseDTO> courses) {
 		this.courses = courses;
 	}
 	
-	public List<Enrollment> getEnrollments() {
+	public List<EnrollmentDTO> getEnrollments() {
 		return enrollments;
 	}
 	
-	public void setEnrollments(List<Enrollment> enrollments) {
+	public void setEnrollments(List<EnrollmentDTO> enrollments) {
 		this.enrollments = enrollments;
 	}
 
@@ -135,7 +131,7 @@ public class Company implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Company other = (Company) obj;
+		CompanyDTO other = (CompanyDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

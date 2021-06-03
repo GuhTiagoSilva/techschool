@@ -5,6 +5,8 @@ import java.time.Instant;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.stonks.techschool.entities.pk.EnrollmentPK;
@@ -21,12 +23,16 @@ public class Enrollment implements Serializable {
 	private boolean available;
 	private boolean onlyUpdate;
 	
+	@ManyToOne
+	@JoinColumn(name = "company_id")
+	private Company company;
+	
 	public Enrollment() {
 		
 	}
 
 	public Enrollment(User user, Course course, Instant enrollMoment, Instant refundMoment, boolean available,
-			boolean onlyUpdate) {
+			boolean onlyUpdate, Company company) {
 		super();
 		this.pk.setUser(user);
 		this.pk.setCourse(course);
@@ -34,6 +40,7 @@ public class Enrollment implements Serializable {
 		this.refundMoment = refundMoment;
 		this.available = available;
 		this.onlyUpdate = onlyUpdate;
+		this.company = company;
 	}
 
 	public User getUser() {
@@ -82,6 +89,14 @@ public class Enrollment implements Serializable {
 
 	public void setOnlyUpdate(boolean onlyUpdate) {
 		this.onlyUpdate = onlyUpdate;
+	}
+	
+	public Company getCompany() {
+		return company;
+	}
+	
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 }
