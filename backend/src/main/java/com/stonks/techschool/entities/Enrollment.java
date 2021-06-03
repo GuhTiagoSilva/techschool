@@ -47,7 +47,7 @@ public class Enrollment implements Serializable {
 		return this.pk.getUser();
 	}
 
-	public void setPk(User user) {
+	public void setUser(User user) {
 		this.pk.setUser(user);
 	}
 	
