@@ -1,6 +1,8 @@
 package com.stonks.techschool.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -43,14 +45,15 @@ public class UserService {
 		copyDtoToEntity(entity, dto);
 		entity.setPassword(dto.getPassword());
 		entity = repository.save(entity);
-		return new UserDTO(entity, entity.getRoles());
+		List<Role> roles = entity.getRoles().stream().collect(Collectors.toList());
+		return new UserDTO(entity, roles.stream().collect(Collectors.toSet()));
 	}
 	
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
 		Optional<User> result = repository.findById(id);
 		User entity = result.orElseThrow(() -> new ResourceNotFoundException("Id Not Found: " + id));
-		return new UserDTO(entity);
+		return new UserDTO(entity, entity.getRoles());
 	}
 	
 	@Transactional
@@ -59,7 +62,7 @@ public class UserService {
 			User entity = repository.getById(id);	
 			copyDtoToEntity(entity, dto);
 			entity = repository.save(entity);
-			return new UserDTO(entity);
+			return new UserDTO(entity, entity.getRoles());
 		}catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Entity Not Found");
 		}	
@@ -68,7 +71,7 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public Page<UserDTO> findAllPaged(PageRequest pageRequest) {
 		Page<User> list = repository.findAll(pageRequest);
-		return list.map(user -> new UserDTO(user));
+		return list.map(user -> new UserDTO(user, user.getRoles()));
 	}
 	
 	public void delete(Long id) {
@@ -91,7 +94,7 @@ public class UserService {
 			entity.getRoles().add(roleEntity);
 		}
 		
-		Company company = companyRepository.getById(dto.getCompany().getId());
+		Company company = companyRepository.getById(dto.getCompanyId());
 		entity.setCompany(company);
 	}
 	

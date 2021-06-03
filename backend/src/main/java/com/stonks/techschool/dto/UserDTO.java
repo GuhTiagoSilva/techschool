@@ -16,8 +16,8 @@ public class UserDTO implements Serializable {
 	private String name;
 	private String email;
 	private List<RoleDTO> roles = new ArrayList<>();
-	private CompanyDTO company;
-
+	private Long companyId;
+	
 	public UserDTO() {
 
 	}
@@ -26,14 +26,14 @@ public class UserDTO implements Serializable {
 		id = entity.getId();
 		name = entity.getName();
 		email = entity.getEmail();
+		companyId = entity.getCompany().getId();
 	}
 
-	public UserDTO(Long id, String name, String email, CompanyDTO company) {
+	public UserDTO(Long id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.company = company;
 	}
 
 	public UserDTO(User entity, Set<Role> rolesEntity) {
@@ -72,13 +72,13 @@ public class UserDTO implements Serializable {
 	public void setRoles(List<RoleDTO> roles) {
 		this.roles = roles;
 	}
-
-	public CompanyDTO getCompany() {
-		return company;
+	
+	public Long getCompanyId() {
+		return companyId;
 	}
-
-	public void setCompany(CompanyDTO company) {
-		this.company = company;
+	
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
 	}
 	
 	@Override
