@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.stonks.techschool.entities.Company;
 import com.stonks.techschool.entities.User;
 
@@ -11,10 +14,19 @@ public class CompanyDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@NotBlank(message = "Campo Obrigatório")
 	private String name;
+	
+	@NotBlank(message = "Campo Obrigatório")
 	private String address;
+	
+	@NotBlank(message="Campo Obrigatório")
 	private Integer addressNumber;
+	
 	private String addressComplement;
+	
+	@NotBlank(message="Campo Obrigatório")
+	@Size(min = 14, max = 14, message = "CNPJ precisa ter 14 dígitos")
 	private String cnpj;
 	private List<UserDTO> users = new ArrayList<>();
 	

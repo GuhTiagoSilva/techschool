@@ -4,15 +4,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.stonks.techschool.entities.Teacher;
 
 public class TeacherDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
+	
+	@NotBlank(message = "Campo Obrigatório")
+	@Size(min = 5)
 	private String name;
+	
+	@NotBlank(message = "Campo Obrigatório")
 	private String address;
+	
+	@NotBlank(message="Campo Obrigatório")
 	private Integer addressNumber;
+	
 	private String addressComplement;
 	private List<CourseDTO> courses = new ArrayList<>();
 	

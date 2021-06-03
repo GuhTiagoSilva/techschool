@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotBlank;
+
 import com.stonks.techschool.entities.Course;
 import com.stonks.techschool.entities.StudyPlan;
 
@@ -12,6 +14,7 @@ public class CourseDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@NotBlank(message = "Campo Obrigatório")
 	private String name;
 	private Long areaId;
 	private List<StudyPlanDTO> studyPlans = new ArrayList<>();

@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.stonks.techschool.entities.Role;
 import com.stonks.techschool.entities.User;
 
@@ -13,7 +17,13 @@ public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@NotBlank(message = "Campo Obrigatório")
+	@Size(min = 5)
 	private String name;
+	
+	@Email
+	@NotBlank(message = "Campo Obrigatório")
 	private String email;
 	private List<RoleDTO> roles = new ArrayList<>();
 	private Long companyId;

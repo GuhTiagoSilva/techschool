@@ -3,12 +3,17 @@ package com.stonks.techschool.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.stonks.techschool.entities.StudyPlan;
 
 public class StudyPlanDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@NotBlank(message = "Campo Obrigatório")
+	@Size(min = 10, message = "A descrição precisa conter no mínimo 10 caracteres")
 	private String description;
 	private Instant startDate;
 	private Instant endDate;
