@@ -1,13 +1,10 @@
 import React from "react";
-import "./assets/styles/custom.scss";
+import "../src/assets/styles/custom.scss";
 import "./app.scss";
+import Routes from "./Routes";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;

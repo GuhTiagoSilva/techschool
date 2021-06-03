@@ -1,0 +1,39 @@
+.main-nav {
+  height: 70px;
+  color: #ffffff;
+  align-items: center;
+  padding-left: 40px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.nav-logo-text {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav-logo-text :hover {
+  color: #ff8c00;
+}
+
+.main-menu {
+  display: flex;
+  font-size: 18px;
+  width: 380px;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.5);
+
+    &.active {
+      font-weight: bold;
+      color: #ff8c00;
+    }
+
+    &:hover {
+      color: #ff8c00;
+    }
+  }
+}
