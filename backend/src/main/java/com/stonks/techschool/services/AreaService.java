@@ -35,14 +35,14 @@ public class AreaService {
 		Area entity = new Area();
 		copyDtoToEntity(entity, dto);
 		entity = repository.save(entity);
-		return new AreaDTO(entity);
+		return new AreaDTO(entity, entity.getCourses());
 	}
 	
 	@Transactional(readOnly = true)
 	public AreaDTO findById(Long id) {
 		Optional<Area> result = repository.findById(id);
 		Area entity = result.orElseThrow(() -> new ResourceNotFoundException("Id Not Found: " + id));
-		return new AreaDTO(entity);
+		return new AreaDTO(entity,entity.getCourses());
 	}
 	
 	@Transactional
@@ -51,7 +51,7 @@ public class AreaService {
 			Area entity = repository.getById(id);	
 			copyDtoToEntity(entity, dto);
 			entity = repository.save(entity);
-			return new AreaDTO(entity);
+			return new AreaDTO(entity, entity.getCourses());
 		}catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Entity Not Found");
 		}	
@@ -60,7 +60,7 @@ public class AreaService {
 	@Transactional(readOnly = true)
 	public Page<AreaDTO> findAllPaged(PageRequest pageRequest) {
 		Page<Area> list = repository.findAll(pageRequest);
-		return list.map(area -> new AreaDTO(area));
+		return list.map(area -> new AreaDTO(area, area.getCourses()));
 	}
 	
 	public void delete(Long id) {
