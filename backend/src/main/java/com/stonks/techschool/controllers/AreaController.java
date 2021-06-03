@@ -61,9 +61,9 @@ public class AreaController {
 
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 
-		Page<AreaDTO> userList = service.findAllPaged(pageRequest);
+		Page<AreaDTO> result = service.findAllPaged(pageRequest);
 
-		return ResponseEntity.ok(userList);
+		return ResponseEntity.ok(result);
 	}
 	
 }

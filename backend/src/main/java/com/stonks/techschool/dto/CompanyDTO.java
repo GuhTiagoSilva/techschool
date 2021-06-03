@@ -3,7 +3,6 @@ package com.stonks.techschool.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.stonks.techschool.entities.Company;
 import com.stonks.techschool.entities.User;

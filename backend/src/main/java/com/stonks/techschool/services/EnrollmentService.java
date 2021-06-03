@@ -53,18 +53,22 @@ public class EnrollmentService {
 
 		Optional<Enrollment> result = repository.findById(pk);
 		Enrollment entity = result.orElseThrow(
-				() -> new ResourceNotFoundException("Id Not Found: " + pk.getUser().getId() + pk.getCourse().getId()));
+				() -> new ResourceNotFoundException("Id Not Found - UserID: " + pk.getUser().getId() + ", CourseID: " +pk.getCourse().getId()));
 		return new EnrollmentDTO(entity);
 	}
 
 	@Transactional
-	public EnrollmentDTO update(Long id, EnrollmentDTO dto) {
+	public EnrollmentDTO update(Long userId, Long courseId, EnrollmentDTO dto) {
 		try {
-			User user = userRepository.getById(dto.getUserId());
-			Course course = courseRepository.getById(dto.getCourseId());
+			User user = userRepository.getById(userId);
+			Course course = courseRepository.getById(courseId);
+			
+			dto.setCourseId(courseId);
+			dto.setUserId(userId);
 
 			EnrollmentPK pk = new EnrollmentPK(user, course);
 			Enrollment entity = repository.getById(pk);
+			
 			copyDtoToEntity(entity, dto);
 			entity = repository.save(entity);
 			return new EnrollmentDTO(entity);

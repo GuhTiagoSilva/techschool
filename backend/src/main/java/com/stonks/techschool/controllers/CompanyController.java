@@ -61,8 +61,8 @@ public class CompanyController {
 
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 
-		Page<CompanyDTO> userList = service.findAllPaged(pageRequest);
+		Page<CompanyDTO> result = service.findAllPaged(pageRequest);
 
-		return ResponseEntity.ok(userList);
+		return ResponseEntity.ok(result);
 	}
 }
