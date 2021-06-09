@@ -3,6 +3,7 @@ package com.stonks.techschool.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -24,8 +25,10 @@ public class TeacherDTO implements Serializable {
 	@NotBlank(message="Campo Obrigatório")
 	private Integer addressNumber;
 	
+	private String description;
+	
 	private String addressComplement;
-	private List<CourseDTO> courses = new ArrayList<>();
+	private Long courseId;
 	
 	private String imgProfile;
 	
@@ -37,9 +40,11 @@ public class TeacherDTO implements Serializable {
 		id = entity.getId();
 		name = entity.getName();
 		address = entity.getAddress();
+		description = entity.getDescription();
 		addressNumber = entity.getAddressNumber();
 		addressComplement = entity.getAddressComplement();
 		imgProfile = entity.getImgProfile();
+		this.courseId = entity.getCourse().getId();
 	}
 
 	public TeacherDTO(Long id, String name, String address, Integer addressNumber, String addressComplement, String imgProfile) {
@@ -92,12 +97,12 @@ public class TeacherDTO implements Serializable {
 		this.addressComplement = addressComplement;
 	}
 
-	public List<CourseDTO> getCourses() {
-		return courses;
+	public Long getCourseId() {
+		return courseId;
 	}
-
-	public void setCourses(List<CourseDTO> courses) {
-		this.courses = courses;
+	
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
 	}
 	
 	public String getImgProfile() {
@@ -106,6 +111,14 @@ public class TeacherDTO implements Serializable {
 	
 	public void setImgProfile(String imgProfile) {
 		this.imgProfile = imgProfile;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override

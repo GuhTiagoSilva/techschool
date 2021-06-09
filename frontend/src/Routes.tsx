@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Catalog from "./pages/Catalog";
@@ -6,6 +5,8 @@ import CourseDetails from "./pages/Catalog/components/CourseDetails";
 import CoursesForm from "./pages/Courses/CoursesForm";
 import Home from "./pages/Home";
 import Teacher from "./pages/Teachers";
+import TeacherDetails from "./pages/Teachers/components/TeacherDetails";
+import TeacherForm from "./pages/Teachers/components/TeacherForm";
 
 const Routes = () => {
   return (
@@ -32,8 +33,18 @@ const Routes = () => {
         </Route>
       </Switch>
       <Switch>
-        <Route path="/teachers">
+        <Route path="/teachers" exact>
           <Teacher />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path="/create/teacher">
+          <TeacherForm />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path="/teachers/:teacherId">
+          <TeacherDetails />
         </Route>
       </Switch>
     </BrowserRouter>

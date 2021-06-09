@@ -2,6 +2,7 @@ package com.stonks.techschool.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ public class Teacher implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	@Column(columnDefinition = "TEXT")
+	private String description;
 	private String address;
 	private Integer addressNumber;
 	private String addressComplement;
@@ -32,7 +35,7 @@ public class Teacher implements Serializable {
 		
 	}
 
-	public Teacher(Long id, String name, String address, String addressComplement, Course course, Integer addressNumber, String imgProfile) {
+	public Teacher(Long id, String name, String address, String addressComplement, Course course, Integer addressNumber, String imgProfile, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,6 +44,7 @@ public class Teacher implements Serializable {
 		this.course = course;
 		this.addressNumber = addressNumber;
 		this.imgProfile = imgProfile;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -97,6 +101,14 @@ public class Teacher implements Serializable {
 	
 	public void setImgProfile(String imgProfile) {
 		this.imgProfile = imgProfile;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override

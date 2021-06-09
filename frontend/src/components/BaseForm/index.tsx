@@ -15,7 +15,7 @@ const BaseForm = ({ title, children }: Props) => {
   };
 
   return (
-    <div className="admin-base-form card-base mt-5 container">
+    <div className="admin-base-form card-base mt-5 container mb-5">
       <h1 className="base-form-title">{title}</h1>
       {children}
       <div className="base-form-actions">

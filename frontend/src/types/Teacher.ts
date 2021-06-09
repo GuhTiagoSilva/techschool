@@ -10,4 +10,6 @@ export type Teacher = {
   addressNumber: number;
   addressComplement: string;
   imgProfile: string;
+  description: string;
+  courseId: number;
 };

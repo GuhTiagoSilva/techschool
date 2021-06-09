@@ -1,4 +1,3 @@
-import React from "react";
 import { Teacher } from "../../../../types/Teacher";
 import "./styles.scss";
 

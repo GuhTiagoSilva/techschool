@@ -58,11 +58,12 @@ const CoursesForm = () => {
 
     makeRequest({ url: "/courses", method: "POST", data: payload })
       .then((response) => {
-        console.log(response.data);
-      })
-      .finally(() => {
         setToaster(true);
         toast.success("Sucesso!");
+      })
+      .catch(() => {
+        setToaster(true);
+        toast.error("Erro!");
       });
   };
 

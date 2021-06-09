@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { ReactComponent as ArrowIcon } from "../../../../../src/assets/images/arrow.svg";
@@ -34,7 +34,6 @@ const CourseDetails = () => {
         </Link>
         <div className="row">
           <div className="col-6 pr-5">
-            (
             <>
               <div className="course-details-card text-center">
                 <img
@@ -47,7 +46,6 @@ const CourseDetails = () => {
 
               {/* {product?.price && <ProductPrice price={product?.price} />} */}
             </>
-            )
           </div>
           <div className="col-6 course-details-card">
             <h1 className="course-description-title">Descrição do Produto</h1>(
@@ -55,10 +53,6 @@ const CourseDetails = () => {
               <p className="course-description-text">{course?.description}</p>
             </>
             )
-            <button className="btn btn-primary button-matricula">
-              {" "}
-              Matricular
-            </button>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import "../src/assets/styles/custom.scss";
 import "./app.scss";
 import Routes from "./Routes";

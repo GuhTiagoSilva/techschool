@@ -25,14 +25,16 @@ const TeacherCatalog = () => {
     <div className="catalog-container">
       <header className="catalog-header">
         <h1 className="catalog-title">Catálogo de Professores</h1>
-        <button className="btn btn-primary create-course-button">
-          Cadastrar Novo Professor
-        </button>
+        <Link to="/create/teacher">
+          <button className="btn btn-primary create-course-button">
+            Cadastrar Novo Professor
+          </button>
+        </Link>
       </header>
 
       <div className="catalog-teachers">
         {teacherResponse?.content.map((teacher) => (
-          <Link to={`/products/${teacher.id}`} key={teacher.id}>
+          <Link to={`/teachers/${teacher.id}`} key={teacher.id}>
             <TeacherCard teacher={teacher} />
           </Link>
         ))}
