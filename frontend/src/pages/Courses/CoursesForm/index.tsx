@@ -80,7 +80,7 @@ const CoursesForm = () => {
   let idList = [];
 
   areaResponse.map((item) => {
-    idList.push(item.id);
+    return idList.push(item.id);
   });
 
   return (

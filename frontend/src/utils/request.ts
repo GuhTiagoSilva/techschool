@@ -7,7 +7,7 @@ type RequestParams = {
   params?: Object;
 };
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://techschool-ps13sips.herokuapp.com";
 
 export const makeRequest = ({
   method = "GET",

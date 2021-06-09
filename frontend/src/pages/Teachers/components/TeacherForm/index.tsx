@@ -57,7 +57,7 @@ const TeacherForm = () => {
   let idList = [];
 
   teacherResponse?.content.map((item) => {
-    idList.push(item.id);
+    return idList.push(item.id);
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

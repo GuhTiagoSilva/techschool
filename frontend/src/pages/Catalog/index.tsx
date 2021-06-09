@@ -10,13 +10,12 @@ import Pagination from "../../components/Pagination";
 const Catalog = () => {
   const [courseResponse, setCourseResponse] = useState<CourseResponse>();
   const [activePage, setActivePage] = useState(0);
-
-  const params = {
-    page: activePage,
-    linesPerPage: 5,
-  };
-
   useEffect(() => {
+    const params = {
+      page: activePage,
+      linesPerPage: 5,
+    };
+
     makeRequest({ url: "/courses", params: params })
       .then((response) => setCourseResponse(response.data))
       .finally(() => {});
