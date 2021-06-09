@@ -44,11 +44,11 @@ const TeacherForm = () => {
     console.log(formData);
   };
 
-  const params = {
-    page: 1,
-    linesPerPage: 5,
-  };
   useEffect(() => {
+    const params = {
+      page: 1,
+      linesPerPage: 5,
+    };
     makeRequest({ url: "/courses", params: params }).then((response) =>
       setTeacherResponse(response.data)
     );

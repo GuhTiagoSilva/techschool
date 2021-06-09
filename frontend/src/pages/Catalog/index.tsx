@@ -5,7 +5,6 @@ import { makeRequest } from "../../utils/request";
 import "./styles.scss";
 
 import CourseCard from "./components/CourseCard";
-import { Course } from "../../types/Course";
 import Pagination from "../../components/Pagination";
 
 const Catalog = () => {

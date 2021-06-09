@@ -43,8 +43,6 @@ const CourseDetails = () => {
                 />
               </div>
               <h1 className="course-details-name">{course?.name}</h1>
-
-              {/* {product?.price && <ProductPrice price={product?.price} />} */}
             </>
           </div>
           <div className="col-6 course-details-card">

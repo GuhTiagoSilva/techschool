@@ -10,12 +10,11 @@ const TeacherCatalog = () => {
   const [teacherResponse, setTeacherResponse] = useState<TeacherResponse>();
   const [activePage, setActivePage] = useState(0);
 
-  const params = {
-    page: activePage,
-    linesPerPage: 5,
-  };
-
   useEffect(() => {
+    const params = {
+      page: activePage,
+      linesPerPage: 5,
+    };
     makeRequest({ url: "/teachers", params: params })
       .then((response) => setTeacherResponse(response.data))
       .finally(() => {});

@@ -67,11 +67,11 @@ const CoursesForm = () => {
       });
   };
 
-  const params = {
-    page: 1,
-    linesPerPage: 5,
-  };
   useEffect(() => {
+    const params = {
+      page: 1,
+      linesPerPage: 5,
+    };
     makeRequest({ url: "/areas/findAll", params: params }).then((response) =>
       setAreaResponse(response.data)
     );
